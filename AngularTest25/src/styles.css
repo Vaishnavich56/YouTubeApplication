@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+nav a.active{
+    color: #039be5;
+} 
+ /* #example1 {
+    box-sizing: content-box;  
+    width: 300px;
+    height: 100px;
+    padding: 30px;  
+    border: 10px solid blue;
+  }  */
+  #example1 {
+  box-sizing: content-box;
+    align-content: center;
+    width: 89%;
+    height: 45vh!important;
+    padding: 30px;
+    border: 3px solid #ccc;
+    margin-left: 40px !important;
+  }
+ 
+.container {
+  width: 38% !important;
+  padding-right: 36px;
+  padding-left: 15px;
+  justify-content: center;
+  height: 50px;
+  margin: auto;
+  background-color: aqua !important;
+}
+
+  .mat-radio-outer-circle {
+    box-sizing: border-box;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: none !important;
+    width: 0px !important; 
+    border-width: 0px !important;
+    border-style: none !important;
+    border-radius: 50%;
+}
+.mat-input-element {
+    font: inherit;
+    background: transparent;
+    color: currentColor !important;
+    border: black !important; 
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 100% !important;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+}
+.mat-select-content{
+  width:2000px;
+  background-color: red;
+  font-size: 10px;   
+}
+.cdk-overlay-pane {
+  /* position: relative !important; */
+  pointer-events: auto;
+  box-sizing: border-box;
+  /* z-index: 1000; */
+}

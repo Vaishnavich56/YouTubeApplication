@@ -1,0 +1,171 @@
+<link
+rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+            <div class="screen" id="example1">
+                <div class="col-md-12">
+                <form [formGroup]="screen1Form">
+                   <div class="col-lg-12 col-md-12 " style="margin-top: 20px;">
+                       <div class="row">
+                        <div class="col-lg-4 col-md-4 row"> 
+                            <div class="col-lg-3 col-md-3" style="padding: 0px!important;">
+                             <label>
+                                 Video Title
+                             </label>
+                            </div>
+                            <div class="col-lg-4 col-md-4" style="padding: 0px!important;">
+                               <input type="text" (change)="onChangeTitle(videoTitle)" formControlName="videoTitle"
+                               [ngClass]="{
+                                'is-invalid ng-touched':
+                                videoTitle.invalid && (videoTitle.dirty || videoTitle.touched)
+                              }"
+                              />
+                            <div
+                              *ngIf="videoTitle.invalid && (videoTitle.dirty || videoTitle.touched)"
+                              class="alert alert-danger"
+                            >
+                            <div *ngIf="videoTitle.errors.required">
+                                Video title is required
+                               </div>
+                              <div *ngIf="videoTitle.errors.minlength">
+                               Video title cannot be less than 5 characters
+                              </div>
+                              <div *ngIf="videoTitle.errors.maxlength">
+                                Video title cannot be more than 20 characters
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                       <div class="col-lg-4 col-md-4 row"> 
+                        <div class="col-lg-2 col-md-2" style="padding: 0px!important;">
+                            <label>
+                                Duration:
+                            </label>
+                           </div>
+                           <div class="col-lg-4 col-md-4" style="padding: 0px!important;margin-left: 11px !important;">
+                              <input type="Number" formControlName="durtion"
+                              [ngClass]="{
+                                'is-invalid ng-touched':
+                                durtion.invalid && (durtion.dirty || durtion.touched)
+                              }"/>
+                              <div
+                              *ngIf="durtion.invalid && (durtion.dirty || durtion.touched)"
+                              class="alert alert-danger"
+                            >
+                              <div *ngIf="durtion.errors.required">
+                               Duration required
+                              </div>
+                            </div>
+                           </div>
+                       </div>
+                       <div class="col-lg-3 col-md-3 row"> 
+                        <div class="col-lg-3 col-md-3" style="padding: 0px!important;">
+                            <label>
+                               Status:
+                            </label>
+                           </div>
+                           <div class="col-lg-8 col-md-8" style="padding: 0px!important;">
+                            <mat-radio-group (change)="radioChange($event)" formControlName="status"   [ngClass]="{
+                                'is-invalid ng-touched':
+                                status.invalid && (status.dirty || status.touched)
+                              }" >
+                                <mat-radio-button
+                                value="active"
+                              >
+                                Active
+                              </mat-radio-button> &nbsp;&nbsp;
+                              <mat-radio-button value="inactive" >
+                                InActive
+                              </mat-radio-button>
+                            </mat-radio-group>
+                            <div
+                            *ngIf="status.invalid && (status.dirty || status.touched)"
+                            class="alert alert-danger"
+                          >
+                            <div *ngIf="status.errors.required">
+                             Duration required
+                            </div>
+                          </div>
+                           </div>
+                       </div>
+                        </div>
+                      
+                   </div>
+                   <div class="col-md-12" style="margin-top: 10px">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 row"> 
+                            <div class="col-lg-3 col-md-3" style="padding: 0px!important;">
+                             <label style="margin-top: 3px;">
+                               Description:
+                             </label>
+                            </div>
+                            <div class="col-lg-4 col-md-4" style="padding: 0px!important;">
+                                <textarea style="height: 30px !important; width: 178px !important;" formControlName="description"
+                                [ngClass]="{
+                                    'is-invalid ng-touched':
+                                    description.invalid && (description.dirty || description.touched)
+                                  }">
+                                    
+                                </textarea>
+                                <div
+                              *ngIf="description.invalid && (description.dirty || description.touched)"
+                              class="alert alert-danger"
+                            >
+                              <div *ngIf="description.errors.required">
+                                Link is required
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                       <div class="col-lg-4 col-md-4 row"> 
+                        <div class="col-lg-2 col-md-2" style="padding: 0px!important;">
+                            <label>
+                                Platform:
+                            </label>
+                           </div>
+                           <div class="col-lg-4 col-md-4" style="padding: 0px!important;margin-left: 11px !important;">
+                            <select formControlName="platform"style="height: 30px !important; width: 178px !important;">
+                                <option *ngFor="let prf of masterResourceService.dropdownList"
+                                [ngClass]="{
+                                    'is-invalid ng-touched':
+                                    platform.invalid && (platform.dirty || platform.touched)
+                                  }">
+                                 {{ prf.value }}
+                                </option>
+                              </select> 
+                              <div
+                              *ngIf="platform.invalid && (platform.dirty || platform.touched)"
+                              class="alert alert-danger"
+                            >
+                              <div *ngIf="platform.errors.required">
+                                Platform is required
+                              </div>
+                            </div>
+                           </div>
+                       </div>
+                        </div>
+                   </div>
+                </form>
+                <div class="col-lg-12 col-md-12 row">
+                        <div class="col-md-8">
+
+                        </div>
+                        <div class="col-md-4 row">
+                        <div class="col-md-3">
+                            <button (click)="submit()">Submit
+
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <button (click)="cancel()">Cancel
+
+                            </button>
+                        </div>
+                         
+                        </div>
+                </div>
+            </div>
+            </div>
+      
